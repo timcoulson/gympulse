@@ -16,6 +16,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.autodidact.gympulse.DesignActivity"
+            android:label="@string/title_activity_design"
+            android:parentActivityName="com.autodidact.gympulse.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.autodidact.gympulse.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.autodidact.gympulse.ChooseSessionActivity"
+            android:label="@string/title_activity_choose_session"
+            android:parentActivityName="com.autodidact.gympulse.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.autodidact.gympulse.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.autodidact.gympulse.SessionActivity"
+            android:label="@string/title_activity_session"
+            android:parentActivityName="com.autodidact.gympulse.ChooseSessionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.autodidact.gympulse.ChooseSessionActivity" />
+        </activity>
+        <activity
+            android:name="com.autodidact.gympulse.DesignSessionActivity"
+            android:label="@string/title_activity_design_session"
+            android:parentActivityName="com.autodidact.gympulse.DesignActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.autodidact.gympulse.DesignActivity" />
+        </activity>
     </application>
 
 </manifest>
