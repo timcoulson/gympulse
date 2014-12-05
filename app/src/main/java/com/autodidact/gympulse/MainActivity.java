@@ -6,10 +6,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
+import java.util.List;
+import java.util.Arrays;
+import java.io.IOException;
+
+import com.autodidact.gympulse.entity.*;
+import com.autodidact.gympulse.util.InternalStorage;
+import com.autodidact.gympulse.entity.Session;
 
 public class MainActivity extends Activity {
 
-    public static void main(String[] args){
+    public void main(String[] args){
     }
 
     @Override
@@ -44,10 +51,16 @@ public class MainActivity extends Activity {
     public void chooseSession(View view){
         Intent intent = new Intent(this, ChooseSessionActivity.class);
         startActivity(intent);
+
     }
 
     public void design(View view){
         Intent intent = new Intent(this, DesignActivity.class);
+        startActivity(intent);
+    }
+
+    public void sessionLog(View view){
+        Intent intent = new Intent(this, SessionLogActivity.class);
         startActivity(intent);
     }
 

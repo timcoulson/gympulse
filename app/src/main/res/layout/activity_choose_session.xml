@@ -11,9 +11,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Session Name"
-        android:id="@+id/textView2"
-        android:layout_marginTop="131dp"
-        android:layout_alignParentTop="true"
+        android:id="@+id/sessionName"
+        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -22,25 +21,28 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Session:"
         android:id="@+id/textView3"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="42dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Begin Workout"
-        android:id="@+id/button3"
-        android:layout_above="@+id/button4"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Skip Workout"
-        android:id="@+id/button4"
+        android:text="Begin Workout"
+        android:id="@+id/beginWorkout"
+        android:layout_above="@+id/skipSession"
+        android:layout_alignLeft="@+id/skipSession"
+        android:layout_alignStart="@+id/skipSession"
+        android:layout_alignRight="@+id/skipSession"
+        android:layout_alignEnd="@+id/skipSession"
+        android:onClick="beginWorkout" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skip Session"
+        android:id="@+id/skipSession"
+        android:onClick="skipSession"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="121dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

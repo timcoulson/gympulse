@@ -8,5 +8,7 @@
     <string name="title_activity_choose_session">ChooseSessionActivity</string>
     <string name="title_activity_session">SessionActivity</string>
     <string name="title_activity_design_session">DesignSessionActivity</string>
+    <string name="title_activity_timer">TimerActivity</string>
+    <string name="title_activity_session_log">SessionLogActivity</string>
 
 </resources>

@@ -34,4 +34,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="71dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log"
+        android:id="@+id/sessionLog"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:onClick="sessionLog" />
+
 </RelativeLayout>
