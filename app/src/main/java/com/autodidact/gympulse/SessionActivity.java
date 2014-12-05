@@ -57,25 +57,21 @@ public class SessionActivity extends Activity {
                 else {
                     btn.setText(String.valueOf(e.getLoggedReps(setNumber)));
                 }
-                btn.setId(btnId);
-                btn.setOnClickListener(new RepsButtonOnClickListener(exerciseNumber, setNumber, e.getRest()));
+                btn.setOnClickListener(new RepsButtonOnClickListener(exerciseNumber, setNumber, e.getRest(),btn, e));
                 tr.addView(btn);
                 android.view.ViewGroup.LayoutParams params = btn.getLayoutParams();
                 params.height = 40;
                 params.width = 40;
                 btn.setLayoutParams(params);
 
-                btnId++;
                 setNumber++;
             }
 
             Button changeWeightBtn = new Button(this);
-            android.view.ViewGroup.LayoutParams params = changeWeightBtn.getLayoutParams();
             changeWeightBtn.setText(String.valueOf(e.getWeight()));
-            changeWeightBtn.setId(btnId);
-            changeWeightBtn.setOnClickListener(new ChangeWeightButtonOnClickListener(e));
+            changeWeightBtn.setOnClickListener(new ChangeWeightButtonOnClickListener(e, changeWeightBtn));
             tr.addView(changeWeightBtn);
-            params = changeWeightBtn.getLayoutParams();
+            android.view.ViewGroup.LayoutParams params = changeWeightBtn.getLayoutParams();
             params.height = 40;
             params.width = 80;
             changeWeightBtn.setLayoutParams(params);
@@ -139,8 +135,9 @@ public class SessionActivity extends Activity {
         try {
             timer.cancel();
         } catch (Exception e){
-
-}
+            // TODO add proper error handler
+            System.out.println("Error");
+        }
 
         timer = new CountDownTimer(rest*1000,1000) {
 public void onTick(long millisUntilFinished) {

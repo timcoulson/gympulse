@@ -16,15 +16,16 @@ import com.autodidact.gympulse.entity.Exercise;
 public class ChangeWeightButtonOnClickListener implements OnClickListener {
 
     Exercise exercise;
+    Button btn;
 
-    public ChangeWeightButtonOnClickListener(Exercise exercise){
+    public ChangeWeightButtonOnClickListener(Exercise exercise, Button btn){
         this.exercise = exercise;
+        this.btn = btn;
     }
 
     @Override
     public void onClick(View view){
         SessionActivity context = (SessionActivity) view.getContext();
-        Button btn = (Button)context.findViewById(view.getId());
 
         final EditText input = new EditText(context);
 
@@ -35,16 +36,7 @@ public class ChangeWeightButtonOnClickListener implements OnClickListener {
         AlertDialog alertDialog = setWeight.create();
         alertDialog.show();
         Button okButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        okButton.setOnClickListener(new AddWeightButtonOnClickListener(alertDialog,exercise,input.getText(),btn));
-
-                //
-           //
-           //     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-           //         public void onClick(DialogInterface dialog, int whichButton) {
-                        // Do nothing.
-            //        }
-
-
+        okButton.setOnClickListener(new AddWeightButtonOnClickListener(alertDialog,exercise,input.getText(),view, btn));
     }
 
 }

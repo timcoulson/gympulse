@@ -19,12 +19,14 @@ public class AddWeightButtonOnClickListener implements View.OnClickListener {
     private final Dialog dialog;
     Exercise exercise;
     Editable input;
+    View view;
     Button btn;
 
-    public AddWeightButtonOnClickListener(Dialog dialog, Exercise exercise, Editable input, Button btn) {
+    public AddWeightButtonOnClickListener(Dialog dialog, Exercise exercise, Editable input, View view, Button btn) {
         this.dialog = dialog;
         this.exercise = exercise;
         this.input = input;
+        this.view = view;
         this.btn = btn;
     }
     @Override
@@ -32,8 +34,8 @@ public class AddWeightButtonOnClickListener implements View.OnClickListener {
         // put your code here
             if(validate(input.toString())){
                 exercise.setWeight(Float.parseFloat(input.toString()));
-                btn.setText(String.valueOf(exercise.getWeight()));
                 dialog.dismiss();
+                btn.setText(String.valueOf(exercise.getWeight()));
             } else{
                 Context context = view.getContext();
                 Toast.makeText(context, "Please enter a number divisible by 2.5kg", Toast.LENGTH_SHORT).show();

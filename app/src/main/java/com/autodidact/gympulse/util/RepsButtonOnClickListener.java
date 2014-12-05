@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.widget.Button;
 
 import com.autodidact.gympulse.R;
+import com.autodidact.gympulse.entity.Exercise;
 import com.autodidact.gympulse.entity.Session;
 import com.autodidact.gympulse.entity.Plan;
 
@@ -26,23 +27,22 @@ public class RepsButtonOnClickListener implements OnClickListener {
     int exerciseNumber;
     int setNumber;
     int rest;
+    Button btn;
     boolean timerRunning = false;
+    Exercise exercise;
 
-    public RepsButtonOnClickListener(int exerciseNumber, int setNumber, int rest){
+    public RepsButtonOnClickListener(int exerciseNumber, int setNumber, int rest, Button btn, Exercise exercise){
         this.exerciseNumber = exerciseNumber;
         this.setNumber = setNumber;
         this.rest = rest;
-
-
-
+        this.btn = btn;
+        this.exercise = exercise;
     }
 
     @Override
     public void onClick(View view){
-        SessionActivity context = (SessionActivity) view.getContext();
-        Button btn = (Button)context.findViewById(view.getId());
-        btn.setText(String.valueOf(context.decrementRep(exerciseNumber, setNumber)));
-        context.countDownTimer(rest);
+        btn.setText(String.valueOf(exercise.decrementRep(setNumber)));
+     //  context.countDownTimer(rest);
     }
 
 }
