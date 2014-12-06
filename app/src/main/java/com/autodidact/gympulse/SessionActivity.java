@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import com.autodidact.gympulse.entity.*;
 import com.autodidact.gympulse.util.AddWeightButtonOnClickListener;
 import com.autodidact.gympulse.util.ChangeWeightButtonOnClickListener;
+import com.autodidact.gympulse.util.IncrementWeightButtonOnClickListener;
 import com.autodidact.gympulse.util.RepsButtonOnClickListener;
 
 import android.view.View.OnClickListener;
@@ -37,7 +38,6 @@ public class SessionActivity extends Activity {
         setContentView(R.layout.activity_session);
 
         // Populate table with exercises
-        int btnId = 0;
         int exerciseNumber = 0;
         TableLayout tl=(TableLayout)findViewById(R.id.sessionTable);
 
@@ -66,29 +66,35 @@ public class SessionActivity extends Activity {
 
                 setNumber++;
             }
-
+            //
             Button changeWeightBtn = new Button(this);
             changeWeightBtn.setText(String.valueOf(e.getWeight()));
             changeWeightBtn.setOnClickListener(new ChangeWeightButtonOnClickListener(e, changeWeightBtn));
             tr.addView(changeWeightBtn);
             android.view.ViewGroup.LayoutParams params = changeWeightBtn.getLayoutParams();
-            params.height = 40;
-            params.width = 80;
+            //TODO why is this causing my text to reposition after click?
+            params.height = 80;
+            params.width = 60;
+            changeWeightBtn.setTextSize(10);
             changeWeightBtn.setLayoutParams(params);
-            btnId++;
+
+            Button incrementWeightBtn = new Button(this);
+            incrementWeightBtn.setText("+");
+            incrementWeightBtn.setOnClickListener(new IncrementWeightButtonOnClickListener(incrementWeightBtn, e));
+            tr.addView(incrementWeightBtn);
+            android.view.ViewGroup.LayoutParams params2 = incrementWeightBtn.getLayoutParams();
+            params2.height = 40;
+            params2.width = 40;
+            incrementWeightBtn.setLayoutParams(params);
+
 
             exerciseNumber++;
             tl.addView(tr, new TableLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+            countDownTimer(90);
         }
 
 
     }
-
-    public boolean RepsButtonOnClickListener(int exerciseNumber, int setNumber){
-        plan.skipSession();
-        return false;
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,18 +118,9 @@ public class SessionActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public int decrementRep(int exerciseNumber, int setNumber){
-            return session.getExercises().get(exerciseNumber).decrementRep(setNumber);
-    }
-
-    public float incrementWeight(int exerciseNumber){
-        return session.getExercises().get(exerciseNumber).incrementWeight();
-    }
-
-
     public void finishSession(View view){
         GymPulse.saveSession(this.session);
-        this.session = GymPulse.getPlan().skipSession();
+        this.session = GymPulse.getPlan().nextSession();
         Intent intent = new Intent(this, ChooseSessionActivity.class);
         startActivity(intent);
     }

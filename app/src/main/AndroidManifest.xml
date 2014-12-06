@@ -56,6 +56,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.autodidact.gympulse.MainActivity" />
         </activity>
+        <activity
+            android:name="com.autodidact.gympulse.ViewSessionActivity"
+            android:label="@string/title_activity_view_session"
+            android:parentActivityName="com.autodidact.gympulse.SessionLogActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.autodidact.gympulse.SessionLogActivity" />
+        </activity>
     </application>
 
 </manifest>

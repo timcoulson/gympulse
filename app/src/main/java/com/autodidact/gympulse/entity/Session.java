@@ -1,5 +1,6 @@
 package com.autodidact.gympulse.entity;
 
+import com.autodidact.gympulse.GymPulse;
 import com.autodidact.gympulse.entity.Exercise;
 
 import java.io.Serializable;
@@ -15,15 +16,27 @@ public class Session implements Serializable {
     private Date date;
     private int id;
 
+    public Session(){
+
+    }
+
     public Session(String name, List<Exercise> exercises){
         this.exercises = exercises;
         this.name = name;
         this.id = 3 * name.hashCode() + 5 * exercises.toString().hashCode();
     }
 
+    public Session(String name, List<Exercise> exercises, Date date){
+        this.exercises = exercises;
+        this.name = name;
+        this.date = date;
+        this.id = 3 * name.hashCode() + 5 * exercises.toString().hashCode();
+    }
+
     public void clearSession() {
         for(Exercise e : exercises){
            e.clearExercise();
+           e.applyIncrement();
         }
     }
 

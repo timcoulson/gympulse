@@ -1,10 +1,12 @@
 package com.autodidact.gympulse;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.ListActivity;
+import android.view.View;
 import android.widget.ListAdapter;
 import java.util.Map;
 
@@ -16,6 +18,10 @@ import java.util.HashMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.content.Context;
+import android.view.View.OnClickListener;
+
+import com.autodidact.gympulse.entity.Session;
+import com.autodidact.gympulse.util.IncrementWeightButtonOnClickListener;
 
 public class SessionLogActivity extends Activity {
 
@@ -25,16 +31,6 @@ public class SessionLogActivity extends Activity {
         setContentView(R.layout.activity_session_log);
 
         final ListView listview = (ListView) findViewById(R.id.listView);
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
-                "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2",
-                "Android", "iPhone", "WindowsMobile" };
-
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
 
         final String[] fromMapKey = new String[] {"sessionName", "timestamp"};
         final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
@@ -44,6 +40,18 @@ public class SessionLogActivity extends Activity {
                 fromMapKey, toLayoutId);
 
         listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                SessionLogActivity context = (SessionLogActivity) view.getContext();
+                Intent intent = new Intent(context, ViewSessionActivity.class);
+                Session session = GymPulse.getSession(position);
+                intent.putExtra("currentSession", session);
+                startActivity(intent);
+
+            }
+
+        });
     }
 
     private class StableArrayAdapter extends ArrayAdapter<String> {

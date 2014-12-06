@@ -14,17 +14,34 @@ public class Exercise implements Serializable {
     private int rest;
     private float weight;
     private List<Integer> loggedSets = new ArrayList<Integer>(sets);
+    private float increment = 2.5f;
 
-    public Exercise(String name, int sets, int reps, int rest, float weight){
+    public Exercise(String name, int sets, int reps, int rest, float weight, float increment){
         this.name = name;
         this.sets = sets;
         this.reps = reps;
         this.rest = rest;
-        this.weight = weight;
+        this.weight = weight + increment;
         // Using an intialised array, because I fear null pointers
         for (int i = 0; i < sets; i++){
             this.loggedSets.add(-1);
         }
+    }
+
+    public void keepSameWeight(){
+        increment = 0f;
+    }
+
+    public void reduceWeight(){
+        increment = -2.5f;
+    }
+
+    public void increaseWeight(){
+        increment = 2.5f;
+    }
+
+    public void applyIncrement(){
+        weight = weight + increment;
     }
 
     public String getName() {
@@ -67,14 +84,6 @@ public class Exercise implements Serializable {
         return weight;
     }
 
-    public float incrementWeight(){
-        return this.weight = weight + 2.5f;
-    }
-
-    public float decrementWeight(){
-        return this.weight = weight - 2.5f;
-    }
-
     public void addLoggedSet(int reps){
         this.loggedSets.add(reps);
     }
@@ -82,6 +91,11 @@ public class Exercise implements Serializable {
     public int getLoggedReps(int setNumber){
         return this.loggedSets.get(setNumber);
     }
+
+    public void resetLoggedReps(int setNumber){
+        this.loggedSets.set(setNumber, 0);
+    }
+
 
     public void clearExercise(){
         this.loggedSets= new ArrayList<Integer>(sets);

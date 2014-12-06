@@ -25,6 +25,10 @@ public class Plan implements Serializable{
 
     public Session skipSession() {
         GymPulse.saveSession(getCurrentSession());
+        return nextSession();
+    }
+
+    public Session nextSession() {
         if(currentSessionIndex == sessions.size() - 1){
             this.currentSessionIndex = 0;
         } else {

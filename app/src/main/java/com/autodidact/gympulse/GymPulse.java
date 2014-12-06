@@ -8,6 +8,7 @@ import android.content.Context;
 import com.autodidact.gympulse.entity.Exercise;
 import com.autodidact.gympulse.entity.Plan;
 import com.autodidact.gympulse.entity.Session;
+import com.autodidact.gympulse.util.ObjectCloner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,11 +26,11 @@ public class GymPulse extends android.app.Application {
     private static GymPulse instance;
 
     // Initialise with Stronglifts
-    private static Exercise squat = new Exercise("squat", 3, 5, 90,100);
-    private static Exercise deadlift = new Exercise("deadlift", 3, 1, 90,100);
-    private static Exercise bench = new Exercise("bench", 3, 5, 90,60);
-    private static Exercise shoulderPress = new Exercise("shoulder press", 3, 5, 90,35);
-    private static Exercise bentOverRow = new Exercise("bent-over row", 3, 5, 90,60);
+    private static Exercise squat = new Exercise("squat", 3, 5, 90,100,0);
+    private static Exercise deadlift = new Exercise("deadlift", 3, 1, 90,100,0);
+    private static Exercise bench = new Exercise("bench", 3, 5, 90,60,0);
+    private static Exercise shoulderPress = new Exercise("press", 3, 5, 90,35,0);
+    private static Exercise bentOverRow = new Exercise("BO row", 3, 5, 90,60,0);
 
     private static List<Exercise> exercisesA = Arrays.asList(squat, bench, bentOverRow);
     private static List<Exercise> exercisesB = Arrays.asList(squat, shoulderPress, deadlift);
@@ -44,10 +45,32 @@ public class GymPulse extends android.app.Application {
     private static Plan plan = new Plan(sessions);
 
     public static void saveSession(Session session){
-        Calendar cal = Calendar.getInstance();
-        session.setDate();
-        loggedSessions.add(session);
+        // TODO this is not a great implementation...
+        for(Exercise exercise : session.getExercises()){
+            for(int set = 0; set < exercise.getSets() ; set++ ){
+                if(exercise.getLoggedReps(set)<0){
+                    exercise.resetLoggedReps(set);
+                }
+            }
+        }
+
+        Session sessionClone = new Session();
+
+        try {
+            sessionClone = (Session) (ObjectCloner.deepCopy(session));
+        } catch(Exception e){
+            //TODO handle this
+            System.out.println("Error");
+        }
+
+        sessionClone.setDate();
+
+        loggedSessions.add(sessionClone);
         session.clearSession();
+    }
+
+    public static Session getSession(int listPosition) {
+        return loggedSessions.get(listPosition);
     }
 
     public static List<Map<String, String>> getSessionLogList() {

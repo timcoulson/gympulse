@@ -10,5 +10,6 @@
     <string name="title_activity_design_session">DesignSessionActivity</string>
     <string name="title_activity_timer">TimerActivity</string>
     <string name="title_activity_session_log">SessionLogActivity</string>
+    <string name="title_activity_view_session">ViewSessionActivity</string>
 
 </resources>
