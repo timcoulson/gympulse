@@ -42,6 +42,8 @@ public class RepsButtonOnClickListener implements OnClickListener {
     @Override
     public void onClick(View view){
         btn.setText(String.valueOf(exercise.decrementRep(setNumber)));
+        SessionActivity context = (SessionActivity)view.getContext();
+        context.countDownTimer(rest);
     }
 
 }

@@ -90,7 +90,6 @@ public class SessionActivity extends Activity {
 
             exerciseNumber++;
             tl.addView(tr, new TableLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-            countDownTimer(90);
         }
 
 
