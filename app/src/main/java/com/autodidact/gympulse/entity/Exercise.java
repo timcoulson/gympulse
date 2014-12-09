@@ -13,7 +13,7 @@ public class Exercise implements Serializable {
     private int reps;
     private int rest;
     private float weight;
-    private List<Integer> loggedSets = new ArrayList<Integer>(sets);
+    private ArrayList<Integer> loggedSets = new ArrayList<Integer>(sets);
     private float increment = 2.5f;
 
     public Exercise(String name, int sets, int reps, int rest, float weight, float increment){
@@ -57,7 +57,12 @@ public class Exercise implements Serializable {
     }
 
     public void setSets(int sets) {
+        this.loggedSets = new ArrayList<Integer>();
         this.sets = sets;
+        for (int i = 0; i < sets; i++){
+            this.loggedSets.add(-1);
+        }
+
     }
 
     public int getReps() {
