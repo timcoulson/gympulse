@@ -3,15 +3,12 @@ package com.autodidact.gympulse;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.autodidact.gympulse.button.onclicklistener.ExerciseNameOnClickListener;
 import com.autodidact.gympulse.button.onclicklistener.RepsOnClickListener;
 import com.autodidact.gympulse.button.onclicklistener.RestOnClickListener;
@@ -30,13 +27,13 @@ public class EditSessionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_design_session);
+        setContentView(R.layout.activity_edit_session);
 
         final Intent myIntent = getIntent(); // gets the previously created intent
 
         String sessionName = myIntent.getStringExtra("session");
 
-        Toast.makeText(this, sessionName, Toast.LENGTH_LONG).show();
+        getActionBar().setTitle("Edit Session");
 
         session = GymPulseModel.getPlan().getSessionFromName(sessionName);
 
@@ -47,28 +44,6 @@ public class EditSessionActivity extends Activity {
            addExerciseRow(e);
         }
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_view_session, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void addExercise(View view){
@@ -97,9 +72,8 @@ public class EditSessionActivity extends Activity {
         changeNameBtn.setOnClickListener(new ExerciseNameOnClickListener(e, changeNameBtn));
         tr.addView(changeNameBtn);
         android.view.ViewGroup.LayoutParams params = changeNameBtn.getLayoutParams();
-        //TODO why is this causing my text to reposition after click?
-        params.height = 40;
-        params.width = 60;
+        params.height = 80;
+        params.width = 160;
         changeNameBtn.setTextSize(10);
         changeNameBtn.setLayoutParams(params);
 
@@ -109,8 +83,8 @@ public class EditSessionActivity extends Activity {
         tr.addView(changeRepsBtn);
         android.view.ViewGroup.LayoutParams params2 = changeRepsBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
-        params2.height = 40;
-        params2.width = 40;
+        params2.height = 80;
+        params2.width = 80;
         changeRepsBtn.setTextSize(10);
         changeRepsBtn.setLayoutParams(params2);
 
@@ -120,32 +94,32 @@ public class EditSessionActivity extends Activity {
         tr.addView(changeSetsBtn);
         android.view.ViewGroup.LayoutParams params3 = changeSetsBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
-        params3.height = 40;
-        params3.width = 40;
+        params3.height = 80;
+        params3.width = 80;
         changeSetsBtn.setTextSize(10);
         changeSetsBtn.setLayoutParams(params3);
 
         Button changeWeightBtn = new Button(this);
-        changeWeightBtn.setText(String.valueOf(e.getSets()));
+        changeWeightBtn.setText(String.valueOf(e.getWeight()));
         changeWeightBtn.setOnClickListener(new WeightDesignOnClickListener(e, changeWeightBtn));
         tr.addView(changeWeightBtn);
         android.view.ViewGroup.LayoutParams params4= changeWeightBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
-        params4.height = 40;
-        params4.width = 40;
+        params4.height = 80;
+        params4.width = 160;
         changeWeightBtn.setTextSize(10);
-        changeWeightBtn.setLayoutParams(params3);
+        changeWeightBtn.setLayoutParams(params4);
 
         Button changeRestBtn = new Button(this);
-        changeRestBtn.setText(String.valueOf(e.getSets()));
+        changeRestBtn.setText(String.valueOf(e.getRest()));
         changeRestBtn.setOnClickListener(new RestOnClickListener(e, changeRestBtn));
         tr.addView(changeRestBtn);
         android.view.ViewGroup.LayoutParams params5= changeRestBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
-        params5.height = 40;
-        params5.width = 40;
+        params5.height = 80;
+        params5.width = 80;
         changeRestBtn.setTextSize(10);
-        changeRestBtn.setLayoutParams(params3);
+        changeRestBtn.setLayoutParams(params5);
 
 
         exerciseNumber++;

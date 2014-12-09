@@ -1,21 +1,18 @@
 package com.autodidact.gympulse.entity;
 
-import android.content.Context;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.autodidact.gympulse.GymPulseModel;
 
 /**
  * Created by timcoulson on 04/12/14.
  */
-public class Plan implements Serializable{
+public class Plan implements Serializable {
     private ArrayList<Session> sessions;
     private int currentSessionIndex;
 
-    public Plan(ArrayList<Session> sessions){
+    public Plan(ArrayList<Session> sessions) {
         this.sessions = sessions;
         this.currentSessionIndex = 0;
     }
@@ -24,18 +21,18 @@ public class Plan implements Serializable{
         return sessions;
     }
 
-    public ArrayList<String> getSessionsString(){
+    public ArrayList<String> getSessionsString() {
         ArrayList<String> sessionsString = new ArrayList<String>();
-        for(Session session: sessions){
+        for (Session session : sessions) {
             sessionsString.add(session.getName());
         }
         return sessionsString;
     }
 
-    public String[] getSessionsArray(){
+    public String[] getSessionsArray() {
         String[] sessionsString = new String[sessions.size()];
         int i = 0;
-        for(Session session: sessions){
+        for (Session session : sessions) {
             sessionsString[i] = session.getName();
             i++;
         }
@@ -51,7 +48,7 @@ public class Plan implements Serializable{
     }
 
     public Session nextSession() {
-        if(currentSessionIndex == sessions.size() - 1){
+        if (currentSessionIndex == sessions.size() - 1) {
             this.currentSessionIndex = 0;
         } else {
             currentSessionIndex++;
@@ -73,15 +70,15 @@ public class Plan implements Serializable{
         return sessions.get(currentSessionIndex);
     }
 
-    public Plan(){
+    public Plan() {
         // Initialise with Stronglifts
-        Exercise squat = new Exercise("squat", 3, 5, 90,100,0);
-        Exercise squat2 = new Exercise("squat", 3, 5, 90,100,0);
+        Exercise squat = new Exercise("squat", 3, 5, 90, 100, 0);
+        Exercise squat2 = new Exercise("squat", 3, 5, 90, 100, 0);
 
-        Exercise deadlift = new Exercise("deadlift", 3, 1, 90,100,0);
-        Exercise bench = new Exercise("bench", 3, 5, 90,60,0);
-        Exercise shoulderPress = new Exercise("press", 3, 5, 90,35,0);
-        Exercise bentOverRow = new Exercise("BO row", 3, 5, 90,60,0);
+        Exercise deadlift = new Exercise("deadlift", 3, 1, 90, 100, 0);
+        Exercise bench = new Exercise("bench", 3, 5, 90, 60, 0);
+        Exercise shoulderPress = new Exercise("press", 3, 5, 90, 35, 0);
+        Exercise bentOverRow = new Exercise("BO row", 3, 5, 90, 60, 0);
 
         ArrayList<Exercise> exercisesA = new ArrayList<Exercise>(Arrays.asList(squat, bench, bentOverRow));
         ArrayList<Exercise> exercisesB = new ArrayList<Exercise>(Arrays.asList(squat2, shoulderPress, deadlift));
@@ -94,6 +91,7 @@ public class Plan implements Serializable{
 
 
     }
+
     public String getCurrentSessionName() {
         return sessions.get(currentSessionIndex).getName();
     }

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
@@ -30,8 +28,10 @@ public class ExecuteSessionActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_session);
+        setContentView(R.layout.activity_execute_session);
         TableLayout tl=(TableLayout)findViewById(R.id.sessionTable);
+
+        getActionBar().setTitle(session.getName());
 
         int exerciseNumber = 0;
         for(Exercise exercise : exercises) {
@@ -52,8 +52,8 @@ public class ExecuteSessionActivity extends Activity {
                 repsButton.setOnClickListener(new SetRepsOnClickListener(exerciseNumber, setNumber, exercise.getRest(),repsButton, exercise));
                 tableRow.addView(repsButton);
                 android.view.ViewGroup.LayoutParams repParams = repsButton.getLayoutParams();
-                repParams.height = 40;
-                repParams.width = 40;
+                repParams.height = 80;
+                repParams.width = 80;
                 repsButton.setLayoutParams(repParams);
                 setNumber++;
             }
@@ -64,7 +64,7 @@ public class ExecuteSessionActivity extends Activity {
             ViewGroup.LayoutParams weightParams = weightButton.getLayoutParams();
             //TODO why is this causing my text to reposition after click?
             weightParams.height = 80;
-            weightParams.width = 60;
+            weightParams.width = 160;
             weightButton.setTextSize(10);
             weightButton.setLayoutParams(weightParams);
             Button incrementButton = new Button(this);
@@ -72,34 +72,12 @@ public class ExecuteSessionActivity extends Activity {
             incrementButton.setOnClickListener(new IncrementWeightButtonOnClickListener(incrementButton, exercise));
             tableRow.addView(incrementButton);
             ViewGroup.LayoutParams incrementParams = incrementButton.getLayoutParams();
-            incrementParams.height = 40;
-            incrementParams.width = 40;
+            incrementParams.height = 80;
+            incrementParams.width = 80;
             incrementButton.setLayoutParams(incrementParams);
             exerciseNumber++;
             tl.addView(tableRow, new TableLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_session, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void finishSession(View view){

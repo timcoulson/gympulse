@@ -8,7 +8,7 @@
     android:layout_height="fill_parent"
 
 
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <com.autodidact.gympulse.util.TouchInterceptor
         android:id="@android:id/list"
@@ -30,7 +30,6 @@
 
 
         android:textSize="18sp" />
-
 
 
 </LinearLayout>

@@ -19,7 +19,8 @@ public class ViewSessionLogActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_session_log);
+        setContentView(R.layout.activity_view_session_log);
+        getActionBar().setTitle("Training Log");
         final ListView listview = (ListView) findViewById(R.id.listView);
         final String[] fromMapKey = new String[] {"sessionName", "timestamp"};
         final int[] toLayoutId = new int[] {android.R.id.text1, android.R.id.text2};
@@ -60,5 +61,7 @@ public class ViewSessionLogActivity extends Activity {
         public boolean hasStableIds() {
             return true;
         }
+
+
     }
 }

@@ -20,6 +20,8 @@ public class ViewLoggedSessionActivity extends Activity {
         setContentView(R.layout.activity_view_session);
         Intent myIntent = getIntent();
         Session session = (Session) myIntent.getSerializableExtra("currentSession");
+        getActionBar().setTitle(session.getName());
+
         TableLayout table=(TableLayout)findViewById(R.id.sessionTable);
 
         for(Exercise exercise : session.getExercises()) {
@@ -29,7 +31,7 @@ public class ViewLoggedSessionActivity extends Activity {
             exerciseName.setText(exercise.getName());
             tableRow.addView(exerciseName);
             TextView sets = new TextView(this);
-            sets.setText(exercise.getSets());
+            sets.setText(String.valueOf(exercise.getSets()));
             tableRow.addView(sets);
             int setNumber = 0;
             while (setNumber < exercise.getSets()) {
@@ -43,27 +45,5 @@ public class ViewLoggedSessionActivity extends Activity {
             tableRow.addView(weight);
             table.addView(tableRow, new TableLayout.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_view_session, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

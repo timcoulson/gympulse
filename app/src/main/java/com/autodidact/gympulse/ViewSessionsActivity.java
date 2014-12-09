@@ -34,7 +34,8 @@ public class ViewSessionsActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_design);
+        setContentView(R.layout.activity_view_sessions);
+        getActionBar().setTitle("Edit Sessions");
         GymPulseModel.persistDB(this);
         ArrayAdapter adp = new ArrayAdapter(this, R.layout.listrow, sArray);
         setListAdapter(adp);
