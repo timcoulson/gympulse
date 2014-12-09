@@ -42,6 +42,7 @@ public class Exercise implements Serializable {
 
     public void applyIncrement(){
         weight = weight + increment;
+        increment = 2.5f;
     }
 
     public String getName() {
