@@ -4,6 +4,7 @@ import com.autodidact.gympulse.GymPulse;
 import com.autodidact.gympulse.entity.Exercise;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.Calendar;
@@ -11,7 +12,7 @@ import java.util.Calendar;
  * Created by timcoulson on 04/12/14.
  */
 public class Session implements Serializable {
-    private List<Exercise> exercises;
+    private ArrayList<Exercise> exercises;
     private String name = "Default";
     private Date date;
     private int id;
@@ -20,13 +21,13 @@ public class Session implements Serializable {
 
     }
 
-    public Session(String name, List<Exercise> exercises){
+    public Session(String name, ArrayList<Exercise> exercises){
         this.exercises = exercises;
         this.name = name;
         this.id = 3 * name.hashCode() + 5 * exercises.toString().hashCode();
     }
 
-    public Session(String name, List<Exercise> exercises, Date date){
+    public Session(String name, ArrayList<Exercise> exercises, Date date){
         this.exercises = exercises;
         this.name = name;
         this.date = date;
@@ -40,11 +41,11 @@ public class Session implements Serializable {
         }
     }
 
-    public List<Exercise> getExercises() {
+    public ArrayList<Exercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(List<Exercise> exercises) {
+    public void setExercises(ArrayList<Exercise> exercises) {
         this.exercises = exercises;
     }
 
@@ -59,6 +60,17 @@ public class Session implements Serializable {
     public Date getDate() {
         return date;
     }
+
+    public Exercise addExercise(){
+        Exercise e = new Exercise("Exercise #", 5, 5, 90, 0, 0);
+        exercises.add(e);
+        return e;
+    }
+
+    public void deleteLastExercise(){
+        exercises.remove(exercises.size()-1);
+    }
+
 
     //TODO rename to timestamp
     public void setDate(){

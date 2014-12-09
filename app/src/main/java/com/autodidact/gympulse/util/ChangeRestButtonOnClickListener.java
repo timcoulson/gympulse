@@ -8,36 +8,35 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.autodidact.gympulse.DesignSessionActivity;
-import com.autodidact.gympulse.SessionActivity;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class ChangeWeightButtonOnClickListener implements OnClickListener {
+public class ChangeRestButtonOnClickListener implements OnClickListener {
 
     Exercise exercise;
     Button btn;
 
-    public ChangeWeightButtonOnClickListener(Exercise exercise, Button btn){
+    public ChangeRestButtonOnClickListener(Exercise exercise, Button btn){
         this.exercise = exercise;
         this.btn = btn;
     }
 
     @Override
     public void onClick(View view){
-        SessionActivity context = (SessionActivity) view.getContext();
+        DesignSessionActivity context = (DesignSessionActivity) view.getContext();
 
         final EditText input = new EditText(context);
 
-        AlertDialog.Builder setWeight = new AlertDialog.Builder(context)
-                .setTitle("Set Weight")
+        AlertDialog.Builder setSets = new AlertDialog.Builder(context)
+                .setTitle("Enter amount of rest [s]")
                 .setView(input)
                 .setPositiveButton("Ok", null);
-        AlertDialog alertDialog = setWeight.create();
+        AlertDialog alertDialog = setSets.create();
         alertDialog.show();
         Button okButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        okButton.setOnClickListener(new AddWeightButtonOnClickListener(alertDialog,exercise,input.getText(),view, btn));
+        okButton.setOnClickListener(new ChangeRestNameDialog(alertDialog,exercise,input.getText(),view, btn));
     }
 
 }

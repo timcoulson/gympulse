@@ -1,18 +1,21 @@
 package com.autodidact.gympulse;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
-import java.util.List;
-import java.util.Arrays;
-import java.io.IOException;
 
-import com.autodidact.gympulse.entity.*;
-import com.autodidact.gympulse.util.InternalStorage;
+import com.autodidact.gympulse.entity.Plan;
 import com.autodidact.gympulse.entity.Session;
+
+import java.util.ArrayList;
+
+import static com.autodidact.gympulse.util.InternalStorage.readObject;
+import static com.autodidact.gympulse.util.InternalStorage.writeObject;
+
 
 public class MainActivity extends Activity {
 
@@ -23,6 +26,35 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        GymPulse.initDB(this);
+        GymPulse.persistDB(this);
+
+   /*     // Read sessions from history, if they don't exit, generate them.
+        try {
+            GymPulse.setLoggedSessions((ArrayList<Session>) readObject(this, "loggedSessions"));
+            if(GymPulse.getLoggedSessions()==null){
+                ArrayList<Session> loggedSessions = new ArrayList<Session>();
+                writeObject(this, "loggedSessions", loggedSessions);
+                GymPulse.setLoggedSessions(loggedSessions);
+            }
+        } catch (Exception e) {
+
+        }
+        // Read sessions from history, if they don't exit, generate them.
+        try {
+            GymPulse.setPlan((Plan) readObject(this, "plan"));
+            if(GymPulse.getPlan()==null){
+                Plan plan = new Plan();
+                writeObject(this, "plan", plan);
+                GymPulse.setPlan(plan);
+            }
+        } catch (Exception e) {
+
+        }
+*/
+
+
     }
 
 

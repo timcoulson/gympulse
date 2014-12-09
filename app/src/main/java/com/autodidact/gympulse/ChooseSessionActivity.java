@@ -17,11 +17,13 @@ public class ChooseSessionActivity extends Activity {
     public void skipSession(View view){
         TextView tv = (TextView)findViewById(R.id.sessionName);
         tv.setText(plan.skipSession().getName());
+        GymPulse.persistDB(this);
     }
 
     public void beginWorkout(View view){
         Intent intent = new Intent(this, SessionActivity.class);
         startActivity(intent);
+
     }
 
     @Override

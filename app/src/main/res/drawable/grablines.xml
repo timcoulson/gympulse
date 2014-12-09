@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="fill_parent"
+
+
+    android:layout_height="@dimen/normal_height"
+
+    android:src="@drawable/handler"
+
+    android:gravity="right" />

@@ -14,30 +14,30 @@ import com.autodidact.gympulse.entity.Exercise;
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class ChangeWeightButtonOnClickListener implements OnClickListener {
+public class ChangeExerciseNameButtonOnClickListener implements OnClickListener {
 
     Exercise exercise;
     Button btn;
 
-    public ChangeWeightButtonOnClickListener(Exercise exercise, Button btn){
+    public ChangeExerciseNameButtonOnClickListener(Exercise exercise, Button btn){
         this.exercise = exercise;
         this.btn = btn;
     }
 
     @Override
     public void onClick(View view){
-        SessionActivity context = (SessionActivity) view.getContext();
+        DesignSessionActivity context = (DesignSessionActivity) view.getContext();
 
         final EditText input = new EditText(context);
 
-        AlertDialog.Builder setWeight = new AlertDialog.Builder(context)
-                .setTitle("Set Weight")
+        AlertDialog.Builder setExerciseName = new AlertDialog.Builder(context)
+                .setTitle("Enter exercise name")
                 .setView(input)
                 .setPositiveButton("Ok", null);
-        AlertDialog alertDialog = setWeight.create();
+        AlertDialog alertDialog = setExerciseName.create();
         alertDialog.show();
         Button okButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        okButton.setOnClickListener(new AddWeightButtonOnClickListener(alertDialog,exercise,input.getText(),view, btn));
+        okButton.setOnClickListener(new ChangeExerciseNameDialog(alertDialog,exercise,input.getText(),view, btn));
     }
 
 }

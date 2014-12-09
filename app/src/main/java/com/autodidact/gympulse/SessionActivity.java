@@ -120,6 +120,7 @@ public class SessionActivity extends Activity {
     public void finishSession(View view){
         GymPulse.saveSession(this.session);
         this.session = GymPulse.getPlan().nextSession();
+        GymPulse.persistDB(this);
         Intent intent = new Intent(this, ChooseSessionActivity.class);
         startActivity(intent);
     }

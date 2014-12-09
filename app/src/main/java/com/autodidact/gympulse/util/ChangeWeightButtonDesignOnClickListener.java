@@ -8,25 +8,24 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.autodidact.gympulse.DesignSessionActivity;
-import com.autodidact.gympulse.SessionActivity;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class ChangeWeightButtonOnClickListener implements OnClickListener {
+public class ChangeWeightButtonDesignOnClickListener implements OnClickListener {
 
     Exercise exercise;
     Button btn;
 
-    public ChangeWeightButtonOnClickListener(Exercise exercise, Button btn){
+    public ChangeWeightButtonDesignOnClickListener(Exercise exercise, Button btn){
         this.exercise = exercise;
         this.btn = btn;
     }
 
     @Override
     public void onClick(View view){
-        SessionActivity context = (SessionActivity) view.getContext();
+        DesignSessionActivity context = (DesignSessionActivity) view.getContext();
 
         final EditText input = new EditText(context);
 
