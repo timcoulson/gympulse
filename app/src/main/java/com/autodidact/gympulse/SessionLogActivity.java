@@ -3,25 +3,18 @@ package com.autodidact.gympulse;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.app.ListActivity;
 import android.view.View;
 import android.widget.ListAdapter;
-import java.util.Map;
 
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.HashMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.content.Context;
-import android.view.View.OnClickListener;
 
 import com.autodidact.gympulse.entity.Session;
-import com.autodidact.gympulse.util.IncrementWeightButtonOnClickListener;
 
 public class SessionLogActivity extends Activity {
 

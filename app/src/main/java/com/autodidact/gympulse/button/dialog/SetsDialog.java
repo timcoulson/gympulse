@@ -1,4 +1,4 @@
-package com.autodidact.gympulse.util;
+package com.autodidact.gympulse.button.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -12,7 +12,7 @@ import com.autodidact.gympulse.entity.Exercise;
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class ChangeExerciseNameDialog implements View.OnClickListener {
+public class SetsDialog implements View.OnClickListener {
 
     private final Dialog dialog;
     Exercise exercise;
@@ -20,7 +20,7 @@ public class ChangeExerciseNameDialog implements View.OnClickListener {
     View view;
     Button btn;
 
-    public ChangeExerciseNameDialog(Dialog dialog, Exercise exercise, Editable input, View view, Button btn) {
+    public SetsDialog(Dialog dialog, Exercise exercise, Editable input, View view, Button btn) {
         this.dialog = dialog;
         this.exercise = exercise;
         this.input = input;
@@ -31,19 +31,20 @@ public class ChangeExerciseNameDialog implements View.OnClickListener {
     public void onClick(View view) {
         // put your code here
             if(validate(input.toString())){
-                exercise.setName(input.toString());
+                exercise.setSets(Integer.parseInt(input.toString()));
                 dialog.dismiss();
-                btn.setText(String.valueOf(exercise.getName()));
+                btn.setText(String.valueOf(exercise.getSets()));
             } else{
                 Context context = view.getContext();
-                Toast.makeText(context, "Please enter some text", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Enter number of sets", Toast.LENGTH_SHORT).show();
             }
     }
 
-    private static boolean validate(String weight)
+    private static boolean validate(String reps)
     {
         try {
-            if (weight.isEmpty()){
+            float parsedReps = Integer.parseInt(reps);
+            if (parsedReps < 0){
                 return false;
             }
         }

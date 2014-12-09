@@ -13,18 +13,13 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.autodidact.gympulse.button.onclicklistener.ExerciseNameOnClickListener;
+import com.autodidact.gympulse.button.onclicklistener.RepsOnClickListener;
+import com.autodidact.gympulse.button.onclicklistener.RestOnClickListener;
+import com.autodidact.gympulse.button.onclicklistener.SetsOnClickListener;
+import com.autodidact.gympulse.button.onclicklistener.WeightDesignOnClickListener;
 import com.autodidact.gympulse.entity.Exercise;
 import com.autodidact.gympulse.entity.Session;
-import com.autodidact.gympulse.util.ChangeExerciseNameButtonOnClickListener;
-import com.autodidact.gympulse.util.ChangeRepsButtonOnClickListener;
-import com.autodidact.gympulse.util.ChangeRestButtonOnClickListener;
-import com.autodidact.gympulse.util.ChangeSetsButtonOnClickListener;
-import com.autodidact.gympulse.util.ChangeWeightButtonDesignOnClickListener;
-import com.autodidact.gympulse.util.ChangeWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.IncrementWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.RepsButtonOnClickListener;
-
-import java.util.ArrayList;
 
 
 public class DesignSessionActivity extends Activity {
@@ -101,7 +96,7 @@ public class DesignSessionActivity extends Activity {
 
         Button changeNameBtn = new Button(this);
         changeNameBtn.setText(String.valueOf(e.getName()));
-        changeNameBtn.setOnClickListener(new ChangeExerciseNameButtonOnClickListener(e, changeNameBtn));
+        changeNameBtn.setOnClickListener(new ExerciseNameOnClickListener(e, changeNameBtn));
         tr.addView(changeNameBtn);
         android.view.ViewGroup.LayoutParams params = changeNameBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
@@ -112,7 +107,7 @@ public class DesignSessionActivity extends Activity {
 
         Button changeRepsBtn = new Button(this);
         changeRepsBtn.setText(String.valueOf(e.getReps()));
-        changeRepsBtn.setOnClickListener(new ChangeRepsButtonOnClickListener(e, changeRepsBtn));
+        changeRepsBtn.setOnClickListener(new RepsOnClickListener(e, changeRepsBtn));
         tr.addView(changeRepsBtn);
         android.view.ViewGroup.LayoutParams params2 = changeRepsBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
@@ -123,7 +118,7 @@ public class DesignSessionActivity extends Activity {
 
         Button changeSetsBtn = new Button(this);
         changeSetsBtn.setText(String.valueOf(e.getSets()));
-        changeSetsBtn.setOnClickListener(new ChangeSetsButtonOnClickListener(e, changeSetsBtn));
+        changeSetsBtn.setOnClickListener(new SetsOnClickListener(e, changeSetsBtn));
         tr.addView(changeSetsBtn);
         android.view.ViewGroup.LayoutParams params3 = changeSetsBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
@@ -134,7 +129,7 @@ public class DesignSessionActivity extends Activity {
 
         Button changeWeightBtn = new Button(this);
         changeWeightBtn.setText(String.valueOf(e.getSets()));
-        changeWeightBtn.setOnClickListener(new ChangeWeightButtonDesignOnClickListener(e, changeWeightBtn));
+        changeWeightBtn.setOnClickListener(new WeightDesignOnClickListener(e, changeWeightBtn));
         tr.addView(changeWeightBtn);
         android.view.ViewGroup.LayoutParams params4= changeWeightBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?
@@ -145,7 +140,7 @@ public class DesignSessionActivity extends Activity {
 
         Button changeRestBtn = new Button(this);
         changeRestBtn.setText(String.valueOf(e.getSets()));
-        changeRestBtn.setOnClickListener(new ChangeRestButtonOnClickListener(e, changeRestBtn));
+        changeRestBtn.setOnClickListener(new RestOnClickListener(e, changeRestBtn));
         tr.addView(changeRestBtn);
         android.view.ViewGroup.LayoutParams params5= changeRestBtn.getLayoutParams();
         //TODO why is this causing my text to reposition after click?

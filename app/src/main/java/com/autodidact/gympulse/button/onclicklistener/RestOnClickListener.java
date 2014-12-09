@@ -1,4 +1,4 @@
-package com.autodidact.gympulse.util;
+package com.autodidact.gympulse.button.onclicklistener;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,18 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.autodidact.gympulse.DesignSessionActivity;
-import com.autodidact.gympulse.SessionActivity;
+import com.autodidact.gympulse.button.dialog.RestDialog;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class ChangeExerciseNameButtonOnClickListener implements OnClickListener {
+public class RestOnClickListener implements OnClickListener {
 
     Exercise exercise;
     Button btn;
 
-    public ChangeExerciseNameButtonOnClickListener(Exercise exercise, Button btn){
+    public RestOnClickListener(Exercise exercise, Button btn){
         this.exercise = exercise;
         this.btn = btn;
     }
@@ -30,14 +30,14 @@ public class ChangeExerciseNameButtonOnClickListener implements OnClickListener 
 
         final EditText input = new EditText(context);
 
-        AlertDialog.Builder setExerciseName = new AlertDialog.Builder(context)
-                .setTitle("Enter exercise name")
+        AlertDialog.Builder setSets = new AlertDialog.Builder(context)
+                .setTitle("Enter amount of rest [s]")
                 .setView(input)
                 .setPositiveButton("Ok", null);
-        AlertDialog alertDialog = setExerciseName.create();
+        AlertDialog alertDialog = setSets.create();
         alertDialog.show();
         Button okButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        okButton.setOnClickListener(new ChangeExerciseNameDialog(alertDialog,exercise,input.getText(),view, btn));
+        okButton.setOnClickListener(new RestDialog(alertDialog,exercise,input.getText(),view, btn));
     }
 
 }

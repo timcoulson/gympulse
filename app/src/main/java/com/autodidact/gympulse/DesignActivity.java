@@ -1,6 +1,5 @@
 package com.autodidact.gympulse;
 
-import android.app.Activity;
 import android.app.ListActivity;
 
 
@@ -18,13 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 
-import android.widget.Toast;
-
-import com.autodidact.gympulse.TouchInterceptor;
-import com.autodidact.gympulse.entity.Session;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.autodidact.gympulse.util.TouchInterceptor;
 
 
 public class DesignActivity extends ListActivity {

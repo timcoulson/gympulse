@@ -1,29 +1,22 @@
 package com.autodidact.gympulse;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.TextView;
-import android.widget.NumberPicker;
-import android.app.AlertDialog;
-import java.util.ArrayList;
-import com.autodidact.gympulse.entity.*;
-import com.autodidact.gympulse.util.AddWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.ChangeWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.IncrementWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.RepsButtonOnClickListener;
 
-import android.view.View.OnClickListener;
+import com.autodidact.gympulse.button.onclicklistener.WeightOnClickListener;
+import com.autodidact.gympulse.entity.*;
+import com.autodidact.gympulse.button.onclicklistener.IncrementWeightButtonOnClickListener;
+import com.autodidact.gympulse.button.onclicklistener.RepsButtonOnClickListener;
+
 import android.widget.Button;
 public class SessionActivity extends Activity {
 
@@ -69,7 +62,7 @@ public class SessionActivity extends Activity {
             //
             Button changeWeightBtn = new Button(this);
             changeWeightBtn.setText(String.valueOf(e.getWeight()));
-            changeWeightBtn.setOnClickListener(new ChangeWeightButtonOnClickListener(e, changeWeightBtn));
+            changeWeightBtn.setOnClickListener(new WeightOnClickListener(e, changeWeightBtn));
             tr.addView(changeWeightBtn);
             android.view.ViewGroup.LayoutParams params = changeWeightBtn.getLayoutParams();
             //TODO why is this causing my text to reposition after click?

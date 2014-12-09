@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.autodidact.gympulse;
+package com.autodidact.gympulse.util;
 
 import android.content.Context;
         import android.content.SharedPreferences;
@@ -38,6 +38,8 @@ import android.content.Context;
         import android.widget.ImageView;
         import android.widget.ListView;
         import android.widget.TextView;
+
+import com.autodidact.gympulse.R;
 
 public class TouchInterceptor extends ListView {
 

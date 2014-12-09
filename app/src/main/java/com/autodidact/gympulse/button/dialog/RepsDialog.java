@@ -1,20 +1,18 @@
-package com.autodidact.gympulse.util;
+package com.autodidact.gympulse.button.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
-import android.content.DialogInterface;
 import android.widget.Toast;
 
-import com.autodidact.gympulse.SessionActivity;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class AddWeightButtonOnClickListener implements View.OnClickListener {
+public class RepsDialog implements View.OnClickListener {
 
     private final Dialog dialog;
     Exercise exercise;
@@ -22,7 +20,7 @@ public class AddWeightButtonOnClickListener implements View.OnClickListener {
     View view;
     Button btn;
 
-    public AddWeightButtonOnClickListener(Dialog dialog, Exercise exercise, Editable input, View view, Button btn) {
+    public RepsDialog(Dialog dialog, Exercise exercise, Editable input, View view, Button btn) {
         this.dialog = dialog;
         this.exercise = exercise;
         this.input = input;
@@ -33,20 +31,20 @@ public class AddWeightButtonOnClickListener implements View.OnClickListener {
     public void onClick(View view) {
         // put your code here
             if(validate(input.toString())){
-                exercise.setWeight(Float.parseFloat(input.toString()));
+                exercise.setReps(Integer.parseInt(input.toString()));
                 dialog.dismiss();
-                btn.setText(String.valueOf(exercise.getWeight()));
+                btn.setText(String.valueOf(exercise.getReps()));
             } else{
                 Context context = view.getContext();
-                Toast.makeText(context, "Please enter a number divisible by 2.5kg", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Enter number of reps", Toast.LENGTH_SHORT).show();
             }
     }
 
-    private static boolean validate(String weight)
+    private static boolean validate(String reps)
     {
         try {
-            float parsedWeight = Float.parseFloat(weight);
-            if (parsedWeight%2.5!=0 || parsedWeight < 0){
+            float parsedReps = Integer.parseInt(reps);
+            if (parsedReps < 0){
                 return false;
             }
         }

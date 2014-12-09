@@ -29,32 +29,6 @@ public class MainActivity extends Activity {
 
         GymPulse.initDB(this);
         GymPulse.persistDB(this);
-
-   /*     // Read sessions from history, if they don't exit, generate them.
-        try {
-            GymPulse.setLoggedSessions((ArrayList<Session>) readObject(this, "loggedSessions"));
-            if(GymPulse.getLoggedSessions()==null){
-                ArrayList<Session> loggedSessions = new ArrayList<Session>();
-                writeObject(this, "loggedSessions", loggedSessions);
-                GymPulse.setLoggedSessions(loggedSessions);
-            }
-        } catch (Exception e) {
-
-        }
-        // Read sessions from history, if they don't exit, generate them.
-        try {
-            GymPulse.setPlan((Plan) readObject(this, "plan"));
-            if(GymPulse.getPlan()==null){
-                Plan plan = new Plan();
-                writeObject(this, "plan", plan);
-                GymPulse.setPlan(plan);
-            }
-        } catch (Exception e) {
-
-        }
-*/
-
-
     }
 
 

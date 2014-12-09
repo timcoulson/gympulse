@@ -6,16 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AbsListView;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.autodidact.gympulse.entity.Exercise;
 import com.autodidact.gympulse.entity.Session;
-import com.autodidact.gympulse.util.ChangeWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.IncrementWeightButtonOnClickListener;
-import com.autodidact.gympulse.util.RepsButtonOnClickListener;
 
 
 public class ViewSessionActivity extends Activity {

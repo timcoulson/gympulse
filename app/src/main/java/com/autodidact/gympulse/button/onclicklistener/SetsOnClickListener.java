@@ -1,4 +1,4 @@
-package com.autodidact.gympulse.util;
+package com.autodidact.gympulse.button.onclicklistener;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,17 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.autodidact.gympulse.DesignSessionActivity;
+import com.autodidact.gympulse.button.dialog.SetsDialog;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**
  * Created by timcoulson on 05/12/14.
  */
-public class ChangeSetsButtonOnClickListener implements OnClickListener {
+public class SetsOnClickListener implements OnClickListener {
 
     Exercise exercise;
     Button btn;
 
-    public ChangeSetsButtonOnClickListener(Exercise exercise, Button btn){
+    public SetsOnClickListener(Exercise exercise, Button btn){
         this.exercise = exercise;
         this.btn = btn;
     }
@@ -36,7 +37,7 @@ public class ChangeSetsButtonOnClickListener implements OnClickListener {
         AlertDialog alertDialog = setSets.create();
         alertDialog.show();
         Button okButton = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        okButton.setOnClickListener(new ChangeSetsNameDialog(alertDialog,exercise,input.getText(),view, btn));
+        okButton.setOnClickListener(new SetsDialog(alertDialog,exercise,input.getText(),view, btn));
     }
 
 }
