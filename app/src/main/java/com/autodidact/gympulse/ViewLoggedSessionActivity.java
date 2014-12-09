@@ -9,48 +9,40 @@ import android.widget.AbsListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
 import com.autodidact.gympulse.entity.Exercise;
 import com.autodidact.gympulse.entity.Session;
 
-
-public class ViewSessionActivity extends Activity {
+public class ViewLoggedSessionActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_session);
-
-        Intent myIntent = getIntent(); // gets the previously created intent
+        Intent myIntent = getIntent();
         Session session = (Session) myIntent.getSerializableExtra("currentSession");
+        TableLayout table=(TableLayout)findViewById(R.id.sessionTable);
 
-        // Populate table with exercises
-        int exerciseNumber = 0;
-        TableLayout tl=(TableLayout)findViewById(R.id.sessionTable);
-
-        for(Exercise e : session.getExercises()) {
-
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.WRAP_CONTENT, AbsListView.LayoutParams.WRAP_CONTENT));
-            TextView textview = new TextView(this);
-            textview.setText(e.getName());
-            tr.addView(textview);
+        for(Exercise exercise : session.getExercises()) {
+            TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.WRAP_CONTENT, AbsListView.LayoutParams.WRAP_CONTENT));
+            TextView exerciseName = new TextView(this);
+            exerciseName.setText(exercise.getName());
+            tableRow.addView(exerciseName);
+            TextView sets = new TextView(this);
+            sets.setText(exercise.getSets());
+            tableRow.addView(sets);
             int setNumber = 0;
-            while (setNumber < e.getSets()) {
+            while (setNumber < exercise.getSets()) {
                 TextView reps = new TextView(this);
-                reps.setText(String.valueOf(e.getLoggedReps(setNumber)));
-                tr.addView(reps);
+                reps.setText(String.valueOf(exercise.getLoggedReps(setNumber)));
+                tableRow.addView(reps);
                 setNumber++;
             }
-
             TextView weight = new TextView(this);
-            textview.setText(String.valueOf(e.getWeight()));
-            tr.addView(weight);
-
-            exerciseNumber++;
-            tl.addView(tr, new TableLayout.LayoutParams(AbsListView.LayoutParams.FILL_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
+            weight.setText(String.valueOf(exercise.getWeight()));
+            tableRow.addView(weight);
+            table.addView(tableRow, new TableLayout.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
         }
-
     }
 
     @Override

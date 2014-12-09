@@ -1,11 +1,7 @@
 package com.autodidact.gympulse.entity;
 
-import com.autodidact.gympulse.GymPulse;
-import com.autodidact.gympulse.entity.Exercise;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
 import java.util.Calendar;
 /**
@@ -13,7 +9,7 @@ import java.util.Calendar;
  */
 public class Session implements Serializable {
     private ArrayList<Exercise> exercises;
-    private String name = "Default";
+    private String name;
     private Date date;
     private int id;
 
@@ -35,9 +31,9 @@ public class Session implements Serializable {
     }
 
     public void clearSession() {
-        for(Exercise e : exercises){
-           e.clearExercise();
-           e.applyIncrement();
+        for(Exercise exercise : exercises){
+           exercise.clearExercise();
+           exercise.applyIncrement();
         }
     }
 
@@ -62,15 +58,14 @@ public class Session implements Serializable {
     }
 
     public Exercise addExercise(){
-        Exercise e = new Exercise("Exercise #", 5, 5, 90, 0, 0);
-        exercises.add(e);
-        return e;
+        Exercise exercise = new Exercise("Exercise #", 5, 5, 90, 0, 0);
+        exercises.add(exercise);
+        return exercise;
     }
 
     public void deleteLastExercise(){
         exercises.remove(exercises.size()-1);
     }
-
 
     //TODO rename to timestamp
     public void setDate(){

@@ -1,13 +1,8 @@
 package com.autodidact.gympulse.button.onclicklistener;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
-
-import com.autodidact.gympulse.SessionActivity;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**
@@ -26,7 +21,6 @@ public class IncrementWeightButtonOnClickListener implements OnClickListener {
     @Override
     public void onClick(View view){
         String label = (String) btn.getText().toString();
-
         if(label=="+"){
             btn.setText("=");
             exercise.keepSameWeight();

@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.autodidact.gympulse.DesignSessionActivity;
+import com.autodidact.gympulse.EditSessionActivity;
 import com.autodidact.gympulse.button.dialog.ExerciseNameDialog;
 import com.autodidact.gympulse.entity.Exercise;
 
@@ -26,8 +25,7 @@ public class ExerciseNameOnClickListener implements OnClickListener {
 
     @Override
     public void onClick(View view) {
-        DesignSessionActivity context = (DesignSessionActivity) view.getContext();
-
+        EditSessionActivity context = (EditSessionActivity) view.getContext();
         final EditText input = new EditText(context);
 
         AlertDialog.Builder setExerciseName = new AlertDialog.Builder(context)

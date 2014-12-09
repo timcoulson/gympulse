@@ -1,36 +1,22 @@
 package com.autodidact.gympulse;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
 import android.view.View;
 
 import com.autodidact.gympulse.entity.Plan;
-import com.autodidact.gympulse.entity.Session;
-
-import java.util.ArrayList;
-
-import static com.autodidact.gympulse.util.InternalStorage.readObject;
-import static com.autodidact.gympulse.util.InternalStorage.writeObject;
-
 
 public class MainActivity extends Activity {
-
-    public void main(String[] args){
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        GymPulse.initDB(this);
-        GymPulse.persistDB(this);
+        GymPulseModel.initDB(this);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,17 +43,15 @@ public class MainActivity extends Activity {
     public void chooseSession(View view){
         Intent intent = new Intent(this, ChooseSessionActivity.class);
         startActivity(intent);
-
     }
 
     public void design(View view){
-        Intent intent = new Intent(this, DesignActivity.class);
+        Intent intent = new Intent(this, ViewSessionsActivity.class);
         startActivity(intent);
     }
 
     public void sessionLog(View view){
-        Intent intent = new Intent(this, SessionLogActivity.class);
+        Intent intent = new Intent(this, ViewSessionLogActivity.class);
         startActivity(intent);
     }
-
 }

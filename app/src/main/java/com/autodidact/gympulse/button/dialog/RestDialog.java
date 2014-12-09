@@ -29,14 +29,13 @@ public class RestDialog implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
-        // put your code here
             if(validate(input.toString())){
                 exercise.setRest(Integer.parseInt(input.toString()));
                 dialog.dismiss();
                 btn.setText(String.valueOf(exercise.getRest()));
             } else{
                 Context context = view.getContext();
-                Toast.makeText(context, "Enter rest in seconds", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Enter rest in whole seconds", Toast.LENGTH_SHORT).show();
             }
     }
 

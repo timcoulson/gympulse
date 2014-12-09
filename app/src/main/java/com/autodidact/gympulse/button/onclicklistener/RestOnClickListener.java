@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.autodidact.gympulse.DesignSessionActivity;
+import com.autodidact.gympulse.EditSessionActivity;
 import com.autodidact.gympulse.button.dialog.RestDialog;
 import com.autodidact.gympulse.entity.Exercise;
 
@@ -26,12 +26,12 @@ public class RestOnClickListener implements OnClickListener {
 
     @Override
     public void onClick(View view){
-        DesignSessionActivity context = (DesignSessionActivity) view.getContext();
+        EditSessionActivity context = (EditSessionActivity) view.getContext();
 
         final EditText input = new EditText(context);
 
         AlertDialog.Builder setSets = new AlertDialog.Builder(context)
-                .setTitle("Enter amount of rest [s]")
+                .setTitle("Enter rest duration [s]")
                 .setView(input)
                 .setPositiveButton("Ok", null);
         AlertDialog alertDialog = setSets.create();

@@ -29,14 +29,13 @@ public class ExerciseNameDialog implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
-        // put your code here
             if(validate(input.toString())){
                 exercise.setName(input.toString());
                 dialog.dismiss();
                 btn.setText(String.valueOf(exercise.getName()));
             } else{
                 Context context = view.getContext();
-                Toast.makeText(context, "Please enter some text", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Please enter something", Toast.LENGTH_SHORT).show();
             }
     }
 

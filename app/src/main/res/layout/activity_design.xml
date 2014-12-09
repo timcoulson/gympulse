@@ -10,7 +10,7 @@
 
     android:orientation="vertical" >
 
-    <com.autodidact.gympulse.TouchInterceptor
+    <com.autodidact.gympulse.util.TouchInterceptor
         android:id="@android:id/list"
 
 

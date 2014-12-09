@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.autodidact.gympulse.DesignActivity"
+            android:name=".ViewSessionsActivity"
             android:label="DesignActivity"
             android:parentActivityName="com.autodidact.gympulse.MainActivity" >
             <meta-data
@@ -33,7 +33,7 @@
                 android:value="com.autodidact.gympulse.MainActivity" />
         </activity>
         <activity
-            android:name="com.autodidact.gympulse.SessionActivity"
+            android:name=".ExecuteSessionActivity"
             android:label="@string/title_activity_session"
             android:parentActivityName="com.autodidact.gympulse.ChooseSessionActivity" >
             <meta-data
@@ -41,15 +41,15 @@
                 android:value="com.autodidact.gympulse.ChooseSessionActivity" />
         </activity>
         <activity
-            android:name="com.autodidact.gympulse.DesignSessionActivity"
+            android:name=".EditSessionActivity"
             android:label="@string/title_activity_design_session"
-            android:parentActivityName="com.autodidact.gympulse.DesignActivity" >
+            android:parentActivityName=".ViewSessionsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.autodidact.gympulse.DesignActivity" />
         </activity>
         <activity
-            android:name="com.autodidact.gympulse.SessionLogActivity"
+            android:name=".ViewSessionLogActivity"
             android:label="@string/title_activity_session_log"
             android:parentActivityName="com.autodidact.gympulse.MainActivity" >
             <meta-data
@@ -57,9 +57,9 @@
                 android:value="com.autodidact.gympulse.MainActivity" />
         </activity>
         <activity
-            android:name="com.autodidact.gympulse.ViewSessionActivity"
+            android:name=".ViewLoggedSessionActivity"
             android:label="@string/title_activity_view_session"
-            android:parentActivityName="com.autodidact.gympulse.SessionLogActivity" >
+            android:parentActivityName=".ViewSessionLogActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.autodidact.gympulse.SessionLogActivity" />

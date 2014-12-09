@@ -1,10 +1,13 @@
 package com.autodidact.gympulse.entity;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.autodidact.gympulse.GymPulse;
+import com.autodidact.gympulse.GymPulseModel;
+
 /**
  * Created by timcoulson on 04/12/14.
  */
@@ -44,7 +47,6 @@ public class Plan implements Serializable{
     }
 
     public Session skipSession() {
-        GymPulse.saveSession(getCurrentSession());
         return nextSession();
     }
 

@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.autodidact.gympulse.SessionActivity;
+import com.autodidact.gympulse.ExecuteSessionActivity;
 import com.autodidact.gympulse.button.dialog.WeightDialog;
 import com.autodidact.gympulse.entity.Exercise;
 
@@ -26,12 +26,12 @@ public class WeightOnClickListener implements OnClickListener {
 
     @Override
     public void onClick(View view){
-        SessionActivity context = (SessionActivity) view.getContext();
+        ExecuteSessionActivity context = (ExecuteSessionActivity) view.getContext();
 
         final EditText input = new EditText(context);
 
         AlertDialog.Builder setWeight = new AlertDialog.Builder(context)
-                .setTitle("Set Weight")
+                .setTitle("Set weight in kg")
                 .setView(input)
                 .setPositiveButton("Ok", null);
         AlertDialog alertDialog = setWeight.create();

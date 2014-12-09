@@ -2,7 +2,6 @@ package com.autodidact.gympulse.util;
 
 import java.io.*;
 
-
 public class ObjectCloner
 {
     // so that nobody can accidentally create an ObjectCloner object

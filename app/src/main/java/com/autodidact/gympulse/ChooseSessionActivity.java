@@ -12,18 +12,16 @@ import com.autodidact.gympulse.entity.Plan;
 
 public class ChooseSessionActivity extends Activity {
 
-    private Plan plan = GymPulse.getPlan();
+    private Plan plan = GymPulseModel.getPlan();
 
     public void skipSession(View view){
         TextView tv = (TextView)findViewById(R.id.sessionName);
-        tv.setText(plan.skipSession().getName());
-        GymPulse.persistDB(this);
+        tv.setText(GymPulseModel.skipSession(this));
     }
 
     public void beginWorkout(View view){
-        Intent intent = new Intent(this, SessionActivity.class);
+        Intent intent = new Intent(this, ExecuteSessionActivity.class);
         startActivity(intent);
-
     }
 
     @Override
@@ -32,9 +30,7 @@ public class ChooseSessionActivity extends Activity {
         setContentView(R.layout.activity_choose_session);
         TextView tv = (TextView)findViewById(R.id.sessionName);
         tv.setText(plan.getCurrentSession().getName());
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

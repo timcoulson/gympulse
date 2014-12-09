@@ -5,10 +5,8 @@ import android.content.Context;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
-import android.content.DialogInterface;
 import android.widget.Toast;
 
-import com.autodidact.gympulse.SessionActivity;
 import com.autodidact.gympulse.entity.Exercise;
 
 /**

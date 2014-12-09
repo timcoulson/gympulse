@@ -12,7 +12,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.autodidact.gympulse.button.onclicklistener.ExerciseNameOnClickListener;
 import com.autodidact.gympulse.button.onclicklistener.RepsOnClickListener;
 import com.autodidact.gympulse.button.onclicklistener.RestOnClickListener;
@@ -21,8 +20,7 @@ import com.autodidact.gympulse.button.onclicklistener.WeightDesignOnClickListene
 import com.autodidact.gympulse.entity.Exercise;
 import com.autodidact.gympulse.entity.Session;
 
-
-public class DesignSessionActivity extends Activity {
+public class EditSessionActivity extends Activity {
 
     TableLayout tl;
     int exerciseNumber = 0;
@@ -40,7 +38,7 @@ public class DesignSessionActivity extends Activity {
 
         Toast.makeText(this, sessionName, Toast.LENGTH_LONG).show();
 
-        session = GymPulse.getPlan().getSessionFromName(sessionName);
+        session = GymPulseModel.getPlan().getSessionFromName(sessionName);
 
         // Populate table with exercises
         this.tl=(TableLayout)findViewById(R.id.sessionTable);
@@ -76,7 +74,7 @@ public class DesignSessionActivity extends Activity {
     public void addExercise(View view){
         Exercise e = session.addExercise();
         addExerciseRow(e);
-        GymPulse.persistDB(this);
+        GymPulseModel.persistDB(this);
     }
 
     public void deleteExercise(View view){
@@ -84,7 +82,7 @@ public class DesignSessionActivity extends Activity {
         tl.removeView(tr);
         exerciseNumber--;
         session.deleteLastExercise();
-        GymPulse.persistDB(this);
+        GymPulseModel.persistDB(this);
     }
 
 
